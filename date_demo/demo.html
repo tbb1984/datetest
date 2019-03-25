@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>data_demo</title>
+<!-- 引入laydate插件开始 -->
+<script type="text/javascript" src="./laydate-v1.1/laydate.js"></script>
+<!-- 引入laydate插件结束 -->
+</head>
+<body>
+<!-- 基础日期调用开始 -->
+基础调用开始：<input onclick="laydate()">
+<!-- 基础日期调用结束 -->
+<br><br>
+<!-- 带时间时分秒调用开始 -->
+带时间时分秒调用：<input onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+<!-- 带时间时分秒调用结束 -->
+<br><br>
+<!-- 带时间、带图标调用开始 -->
+带时间、带图标调用：<input class="laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+<!-- 带时间、带图标调用结束 -->
+<br><br>
+<!-- 外部js简单调用开始 -->
+外部js简单调用：<input id="hello" class="laydate-icon">
+<script type="text/javascript">
+laydate({
+    elem: '#hello', //需显示日期的元素选择器
+    event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+});
+</script>
+<!-- 外部js简单调用结束 -->
+<br><br>
+<!-- 外部js设置具体参数调用开始 -->
+外部js设置具体参数调用：<input id="test" class="laydate-icon">
+<script type="text/javascript">
+/*方法属性开始*/
+	laydate.skin('molv'); // 设置皮肤 官方默认可以调用的皮肤有'default'、'dahong'、'molv' 此版本已集成了'default'、'dahong'、'molv'、'danlan'、'yalan'、'qianhuang'、'yahui'、'huanglv'
+	var tody=laydate.now('-2'); // laydate.now(timestamp, format); timestamp可以是前后若干天，也可以是一个时间戳。format为日期格式，为空时则采用默认的“-”分割。如laydate.now(-2)将返回前天，laydate.now(3999634079890)将返回2096-09-28
+/*方法属性结束*/
+/*参数设置开始*/
+	laydate({
+		elem: '#test', //需显示日期的元素选择器
+		event: 'mouseover', //触发事件 可以调用的事件'click'、'focus'、'mouseover'、'mouseout'等
+		format: 'YYYY/MM/DD hh:mm:ss', //日期格式
+		istime: false, //是否开启时间选择
+		isclear: true, //是否显示清空
+		istoday: true, //是否显示今天
+		issure: true, //是否显示确认
+		festival: true, //是否显示节日
+		min: '2015-03-01 00:00:00', //最小日期
+		max: '2015-04-01 23:59:59', //最大日期
+		start: laydate.now(),    //开始日期 例如：'2015-04-01 23:59:59' 此处是先用laydate.now('-1')获得了昨天的时间
+		fixed: false, //是否固定在可视区域
+		zIndex: 99999999, //css z-index
+		choose: function(dates){ //选择好日期后的回调
+			alert(tody);
+		}
+	})
+/*参数设置结束*/
+</script>
+
+<!-- 外部js设置具体参数调用结束 -->
+</body>
+</html>
